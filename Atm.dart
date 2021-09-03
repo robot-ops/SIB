@@ -7,7 +7,7 @@ void main(List<String> args) {
   login();
   print("=========================");
 }
-
+// Buat Contstructor User
 class Users {
   String user;
   int saldo;
@@ -36,16 +36,16 @@ class Users {
     this.saldo = saldo;
   }
 }
-
+// Input Data User kedalam Array List
 List<Users> users = [
   Users("Abel", 1234, 1000000, 12345678),
   Users("Bela", 5678, 1500000, 87654321),
   Users("Bale", 9011, 500000, 23456789),
   Users("Bael", 1213, 2500000, 98765432)
 ];
-
+// Definisikan ArrayList
 Users user;
-
+// Menu Login
 void login() {
   if (validation()) {
     home();
@@ -53,7 +53,7 @@ void login() {
     login();
   }
 }
-
+// Validasi PIN
 bool validation() {
   bool isLogin = false;
   print("Masukkan PIN");
@@ -67,13 +67,15 @@ bool validation() {
   }
   return isLogin;
 }
-
+// Homepage
 void home() {
   print("===============================");
   var use = user.getUser();
   var rekening = user.getRek();
+  var balance = user.getSaldo();
   print("Nasabah : $use");
   print("No. Rek : $rekening");
+  print("Saldo   : $balance");
   print("");
   print("1. Tarik Tunai");
   print("2. Setor Tunai");
@@ -82,10 +84,9 @@ void home() {
   stdout.write("Pilih Menu : ");
   menu();
 }
-
+// Fungsi tiap menu pada homepage
 void menu() {
   var menu = stdin.readLineSync();
-  // ignore: unused_local_variable
   int pilih;
   switch (menu) {
     case "1":
@@ -154,7 +155,7 @@ void menu() {
       break;
   }
 }
-
+// Fungsi transfer
 void trasnfer(int nominal, int norek) {
   var user1 = user.getSaldo() - nominal;
   var user2 = user.getSaldo() + nominal;
@@ -166,7 +167,7 @@ void trasnfer(int nominal, int norek) {
     user.setSaldo(user2);
   }
 }
-
+// Update Saldo
 void Saldo(int nominal) {
   var saldo = user.getSaldo() + nominal;
   print("Saldo $saldo");
